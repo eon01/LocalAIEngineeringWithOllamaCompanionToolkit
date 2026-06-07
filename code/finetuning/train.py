@@ -1,3 +1,5 @@
+# isort: skip_file
+# Unsloth MUST be imported before trl/transformers/peft so its patches apply.
 from unsloth import FastLanguageModel
 from unsloth.chat_templates import train_on_responses_only
 
