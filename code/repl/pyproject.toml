@@ -1,0 +1,50 @@
+[project]
+name = "repl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb==1.5.9",
+    "langchain==1.2.18",
+    "langchain-core==1.4.0",
+    "langchain-mcp-adapters==0.2.2",
+    "langchain-ollama==1.1.0",
+    "langchain-redis==0.2.5",
+    "mem0ai[nlp]==2.0.0",
+    "ollama==0.6.2",
+    "python-dotenv==1.2.2",
+]
+[project.scripts]
+repl  = "repl:main"
+
+[build-system]                       
+# build dependency: the hatchling backend
+requires = ["hatchling"]             
+build-backend = "hatchling.build"    
+
+[tool.hatch.build.targets.wheel]  
+# which files to include in the wheel distribution.
+include = ["repl.py"]
+
+[tool.ruff]
+line-length = 60
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint]
+# E = pycodestyle errors, F = pyflakes, I = isort
+select = ["E", "F", "I"]
+# E501 = line too long. The formatter handles wrapping, so we
+# don't want the linter to also complain about it.
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+# One import per line. Forces `from X import A, B` to split
+# into `from X import A` / `from X import B`.
+force-single-line = true
+known-first-party = ["config"]
