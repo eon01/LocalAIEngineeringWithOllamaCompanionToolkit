@@ -1,7 +1,8 @@
-from datasets import load_dataset
-from trl import SFTConfig, SFTTrainer
 from unsloth import FastLanguageModel
 from unsloth.chat_templates import train_on_responses_only
+
+from datasets import load_dataset
+from trl import SFTConfig, SFTTrainer
 
 # How long each training example can be, in tokens.
 # A SQL schema plus a question fits comfortably in 2048.
