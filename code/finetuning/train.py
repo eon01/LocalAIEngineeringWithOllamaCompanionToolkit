@@ -76,6 +76,7 @@ trainer = SFTTrainer(
     train_dataset=dataset,
     args=SFTConfig(
         dataset_text_field="text",
+        dataset_num_proc=1,  # avoid multiprocessing pickling issues
         per_device_train_batch_size=2,
         gradient_accumulation_steps=4,  # effective batch size = 2 x 4 = 8
         warmup_steps=5,
