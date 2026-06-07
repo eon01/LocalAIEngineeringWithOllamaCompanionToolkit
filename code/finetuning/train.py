@@ -1,9 +1,7 @@
 from datasets import load_dataset
-from trl import SFTConfig
-from trl import SFTTrainer
-from unsloth.chat_templates import train_on_responses_only
-
+from trl import SFTConfig, SFTTrainer
 from unsloth import FastLanguageModel
+from unsloth.chat_templates import train_on_responses_only
 
 # How long each training example can be, in tokens.
 # A SQL schema plus a question fits comfortably in 2048.
@@ -60,9 +58,7 @@ def format_example(row):
         {"role": "assistant", "content": row["sql"]},
     ]
     # tokenize=False returns plain text; the trainer tokenizes later.
-    text = tokenizer.apply_chat_template(
-        messages, tokenize=False
-    )
+    text = tokenizer.apply_chat_template(messages, tokenize=False)
     return {"text": text}
 
 
@@ -75,7 +71,7 @@ print(dataset[0]["text"])
 
 trainer = SFTTrainer(
     model=model,
-    tokenizer=tokenizer,
+    processing_class=tokenizer,
     train_dataset=dataset,
     args=SFTConfig(
         dataset_text_field="text",
