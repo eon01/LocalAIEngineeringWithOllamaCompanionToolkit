@@ -2,7 +2,7 @@
 
 **Run, understand, customize, fine-tune, and build agentic apps on your own hardware.**
 
-[![](static/3d.png)](https://faun.dev/sensei)
+[![](static/3d.png)](https://faun.dev/sensei/academy/local-ai-engineering-with-ollama-05b200/)
 
 ## Why This Book Exists
 
